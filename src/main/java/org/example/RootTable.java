@@ -5,9 +5,6 @@ import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.print.PrinterException;
-
-import static javax.swing.JTable.AUTO_RESIZE_OFF;
 
 public class RootTable extends JFrame{
 
@@ -19,6 +16,7 @@ public class RootTable extends JFrame{
     private JTextField textField1;
     private JButton button2;
     private JTextField textField2;
+    private JButton colorButton;
 
 
     public RootTable(){
@@ -85,6 +83,12 @@ public class RootTable extends JFrame{
                 TableColumn column = columnModel.getColumn (Integer.parseInt(textField2.getText()));
                 table1.removeColumn(column);
                 table1.addColumn(new TableColumn(Integer.parseInt(textField2.getText()))) ;
+            }
+        });
+        colorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                table1.setDefaultRenderer(Color.class, new ColorTableCellRenderer());
             }
         });
     }
